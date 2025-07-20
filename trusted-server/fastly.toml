@@ -1,0 +1,41 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = ["valentin.selve@didomi.io"]
+cloned_from = "https://github.com/fastly/compute-starter-kit-rust-default"
+description = "Didomi Trusted Server"
+language = "rust"
+manifest_version = 3
+name = "trusted-server"
+service_id = "yizvTFhBxPtusoiY1s3as0"
+
+[scripts]
+build = """
+    cargo build --bin trusted-server-fastly --release --target wasm32-wasip1 --color always
+"""
+
+[local_server]
+    [local_server.backends]
+
+        [local_server.backends.equativ_ad_api_2]
+            url = "https://adapi-srv-eu.smartadserver.com"
+        [local_server.backends.prebid_backend]
+            url = "http://prebid-alb-production-135029076.us-east-1.elb.amazonaws.com"
+        [local_server.backends.gam_backend]
+            url = "https://securepubads.g.doubleclick.net"
+        [local_server.backends.wordpress_backend]
+            url = "http://localhost:8080"  # Adjust this to your local WordPress URL
+        [local_server.backends.didomi_sdk]
+            url = "https://sdk.privacy-center.org"
+        [local_server.backends.didomi_api]
+            url = "https://api.privacy-center.org"
+
+
+    [local_server.kv_stores]
+        [[local_server.kv_stores.valentin_selve_id_counter]]
+            key = "placeholder"
+            data = "placeholder"
+
+        [[local_server.kv_stores.valentin_selve_id_opid]]
+            key = "placeholder"
+            data = "placeholder"

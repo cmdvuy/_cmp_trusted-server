@@ -1,0 +1,9 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/common",
+    "crates/fastly", 
+]
+
+[profile.release]
+debug = 1

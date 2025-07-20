@@ -1,0 +1,28 @@
+[publisher]
+domain = "didotest.com"
+cookie_domain = ".didotest.com"
+origin_url = "https://didotest.com"
+
+[ad_server]
+ad_partner_url = "equativ_ad_api_2"
+sync_url = "https://adapi-srv-eu.smartadserver.com/ac?pgid=2040327&fmtid=137675&synthetic_id={{synthetic_id}}"
+
+[prebid]
+# Will be updated with actual AWS ALB DNS name after deployment
+server_url = "http://prebid-alb-production-135029076.us-east-1.elb.amazonaws.com/openrtb2/auction"
+
+[gam]
+publisher_id = "3790"
+server_url = "https://securepubads.g.doubleclick.net/gampad/ads"
+ad_units = [
+    { name = "Flex8:1", size = "flexible" },
+    { name = "Fixed728x90", size = "728x90" },
+    { name = "Static8:1", size = "flexible" },
+    { name = "Static728x90", size = "728x90" }
+]
+
+[synthetic]
+counter_store = "valentin-selve-id-counter"
+opid_store = "valentin-selve-id-opid"
+secret_key = "trusted-server"
+template = "{{ client_ip }}:{{ user_agent }}:{{ first_party_id }}:{{ auth_user_id }}:{{ publisher_domain }}:{{ accept_language }}"

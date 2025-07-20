@@ -1,0 +1,34 @@
+# Production Fastly configuration for existing service
+# Service ID: WfMVIeKbZQgSMiAkMMJO81
+# Service name: trusted-server
+
+authors = ["valentin.selve@didomi.io"]
+description = "Didomi Trusted Server - Production"
+language = "rust"
+manifest_version = 3
+name = "trusted-server"
+
+[scripts]
+build = """
+    cargo build --bin trusted-server-fastly --release --target wasm32-wasip1 --color always
+"""
+
+# Production backends configuration
+[backends]
+    [backends.equativ_ad_api_2]
+        url = "https://adapi-srv-eu.smartadserver.com"
+        
+    [backends.prebid_backend]
+        # Will be updated with actual AWS ALB DNS name after terraform deployment
+        url = "http://prebid-alb-production-135029076.us-east-1.elb.amazonaws.com"
+        
+    [backends.gam_backend]
+        url = "https://securepubads.g.doubleclick.net"
+
+# Existing KV stores (already created in Fastly)
+[kv_stores]
+    [kv_stores.valentin-selve-id-counter]
+        # KV Store ID: i5vwn1znzbsdacvc5k9l50
+        
+    [kv_stores.valentin-selve-id-opid]
+        # KV Store ID: qb57z7k9nq7etj01pg3pzq

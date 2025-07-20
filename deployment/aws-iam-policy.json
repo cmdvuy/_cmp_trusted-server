@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:*",
+                "ecs:*",
+                "elasticloadbalancing:*",
+                "iam:CreateRole",
+                "iam:AttachRolePolicy",
+                "iam:GetRole",
+                "iam:PassRole",
+                "iam:TagRole",
+                "iam:ListAttachedRolePolicies",
+                "logs:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
