@@ -10,6 +10,7 @@ Thumbs.db
 # IDE Files
 .vscode/
 .idea/
+.claude/
 *.swp
 *.swo
 *~
